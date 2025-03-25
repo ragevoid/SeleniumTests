@@ -5,19 +5,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;;;
 
+@SpringBootTest
+@TestPropertySource("classpath:env.properties")
 public class LoginTest {
 
     private WebDriver driver;
 
     @Value("${SITE_USERNAME}")
-    public String siteUsername;
+    private String siteUsername;
 
     @Value("${SITE_PASS}")
-    public String sitePass;
+    private String sitePass;
 
     @BeforeEach
     void setUp() throws Exception {
