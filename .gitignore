@@ -33,4 +33,6 @@ build/
 .vscode/
 
 ### ENV ###
-src\test\resources\env.properties
+src/test/resources/env.properties
+
+
