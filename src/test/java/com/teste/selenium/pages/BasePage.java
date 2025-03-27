@@ -5,12 +5,16 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public abstract class BasePage {
     private WebDriver driver;
 
     public BasePage() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -28,6 +32,7 @@ public abstract class BasePage {
     }
 
     public WebElement findElement(By locator) {
+
         return this.driver.findElement(locator);
     }
 
@@ -51,4 +56,8 @@ public abstract class BasePage {
         return this.driver.findElement(locator).getText();
     }
 
+    public WebElement waitForElement(By locator, int timeInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeInSeconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 }
