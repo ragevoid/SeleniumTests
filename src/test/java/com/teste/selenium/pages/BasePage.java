@@ -58,7 +58,7 @@ public abstract class BasePage {
         return this.driver.findElement(locator).getText();
     }
 
-    public void actionMoveToElementPerfom(By locator) {
+    public void actionMoveToElementPerform(By locator) {
         if (this.action == null) {
             this.action = new Actions(this.driver);
         }
@@ -68,7 +68,7 @@ public abstract class BasePage {
 
     }
 
-    public void actionMoveToElementClickPerfom(By locator) {
+    public void actionMoveToElementClickPerform(By locator) {
         if (this.action == null) {
             this.action = new Actions(this.driver);
         }
@@ -81,5 +81,13 @@ public abstract class BasePage {
     public WebElement waitForElement(By locator, int timeInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeInSeconds));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void clear(By locator) {
+        this.driver.findElement(locator).clear();
+    }
+
+    public String getTextByAttribute(By locator, String attributeName) {
+        return this.driver.findElement(locator).getAttribute(attributeName);
     }
 }

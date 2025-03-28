@@ -34,6 +34,9 @@ public class TestJeansPage {
         String expectedUrl = "https://automationexercise.com/category_products/6";
         String currentURL = this.jeansPage.getCurrentUrl();
         assertEquals(expectedUrl, currentURL);
+        String expectedViewCardText = "Your product has been added to cart.";
+        String currentViewCardText = this.jeansPage.getviewCartLinkText();
+        assertEquals(expectedViewCardText, currentViewCardText);
 
     }
 }
