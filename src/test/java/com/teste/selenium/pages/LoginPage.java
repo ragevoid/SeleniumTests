@@ -2,33 +2,21 @@ package com.teste.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-// import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-// @TestPropertySource("classpath:env.properties")
 @Component
 public class LoginPage extends BasePage {
 
     // Locators (Elementos de la pagina)
 
-    // <input type="email" data-qa="login-email" placeholder="Email Address"
-    // name="email" value="" required="">
     private By emailLocator = By.cssSelector("input[data-qa='login-email']");
 
-    // <input type="password" data-qa="login-password" placeholder="Password"
-    // name="password" value="" required="">
     private By passLocator = By.cssSelector("input[data-qa='login-password']");
-
-    // <button type="submit" data-qa="login-button" class="btn
-    // btn-default">Login</button>
 
     private By loginBtn = By.cssSelector("button[data-qa='login-button']");
 
-    // <a><i class="fa fa-user"></i> Logged in as <b>Ricardo</b></a>
     private By uernameTag = By.xpath("//a[contains(text(),'Logged in as')]");
-    // private By uernameTag = By.className("fa-user");
-    // Credenciales para acesso al sitio web, utilizando env.properties
 
     @Value("${SITE_USERNAME}")
     private String siteUsername;

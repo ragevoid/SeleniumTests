@@ -4,19 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.teste.selenium.WebDriverManager;
+
 import java.time.Duration;
 
 public abstract class BasePage {
     private WebDriver driver;
+    private Actions action;
 
     public BasePage() {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+        this.driver = WebDriverManager.getDriver();
 
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
     }
 
     public void visit(String url) {
@@ -54,6 +56,26 @@ public abstract class BasePage {
 
     public String getText(By locator) {
         return this.driver.findElement(locator).getText();
+    }
+
+    public void actionMoveToElementPerfom(By locator) {
+        if (this.action == null) {
+            this.action = new Actions(this.driver);
+        }
+        WebElement element = this.driver.findElement(locator);
+        action.moveToElement(element).perform();
+        ;
+
+    }
+
+    public void actionMoveToElementClickPerfom(By locator) {
+        if (this.action == null) {
+            this.action = new Actions(this.driver);
+        }
+        WebElement element = this.driver.findElement(locator);
+        action.moveToElement(element).click().build().perform();
+        ;
+
     }
 
     public WebElement waitForElement(By locator, int timeInSeconds) {
