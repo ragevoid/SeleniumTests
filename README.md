@@ -12,6 +12,8 @@ Este repositório foi criado para aprender e praticar testes automatizados utili
 ## Estrutura do Projeto
 
 A estrutura do repositório está organizada da seguinte forma:
+
+
 ![image](https://github.com/user-attachments/assets/2d6aae5d-3f77-4244-95dd-d7de84c0ecee)
 
 
